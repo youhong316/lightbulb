@@ -160,9 +160,9 @@
             <div class="columns">
               <div class="col">
                 <ul>
-                  <li>28,000+ stars &amp; 10,000+ forks on GitHub</li>
-                  <li>3200+ GitHub Contributors</li>
-                  <li>Over 1300 modules shipped with Ansible</li>
+                  <li>34,000+ stars &amp; 10,000+ forks on GitHub</li>
+                  <li>4000+ GitHub Contributors</li>
+                  <li>Over 2000 modules shipped with Ansible</li>
                   <li>New contributors added every day</li>
                   <li>1200+ users on IRC channel</li>
                   <li>Top 10 open source projects in 2017</li>
@@ -174,7 +174,7 @@
                 <p>http://ansible.com/community</p>
               </div>
               <div class="col">
-                  <img src="images/ansibe-up-and-running-ebook.png"/>
+                  <img src="images/ansible-up-and-running-ebook.png"/>
               </div>
           </div>
         </div>
@@ -202,17 +202,19 @@
         <section>
           <h2>Installing Ansible</h2>
           <pre class="language-yaml"><code>
-# the most common and preferred way of
-# installation
-$ sudo pip install ansible
-
-# you will need the extras repo configured on
+# the best way to install Ansible on
 # CentOS, RHEL, or Scientific Linux
+# is to configure the EPEL repository
+# and install Ansible directly
 $ sudo yum install ansible
 
-# you will need the PPA repo configured on
-# Debian or Ubuntu
+# on Debian or Ubuntu you will need the PPA
+# repo configured
 $ sudo apt-get install ansible
+
+# on all other platforms it can be
+# installed via pip
+$ sudo pip install ansible
           </code></pre>
           <aside class="notes">
             <p>As open source, Ansible is freely-available thru numerous means and can be installed in minutes with only a few requirements that most system already have. The installation methods listed here are the most commonly used.</p>
@@ -335,7 +337,7 @@ $ sudo apt-get install ansible
           <h2>Modules Documentation</h2>
             <div class="columns">
               <div class="col">
-          <p><strong>http://docs.ansible.com/</strong></p>
+          <p><strong>https://docs.ansible.com/ansible/latest/modules/modules_by_category.html</strong></p>
                 </div>
                 <div class="col">
           <img src="images/modules-doc-screenshots.png" />
@@ -615,7 +617,7 @@ $ ansible web -m command -a &quot;uptime&quot;
           <h2>Example Tasks in a Play</h2>
           <pre class="language-yaml"><code>
 tasks:
-- name: Ensure httpd package is present
+- name: Ensure httpd package is latest
   yum:
     name: httpd
     state: latest
@@ -654,7 +656,7 @@ tasks:
           <h2>Example Handler Task in a Play</h2>
           <pre class="language-yaml"><code data-noescape>
 tasks:
-- name: Ensure httpd package is present
+- name: Ensure httpd package is latest
   yum:
     name: httpd
     state: latest
@@ -666,7 +668,7 @@ tasks:
     dest: /var/www/html/
 
 <mark>handlers:</mark>
-- name: restart-httpd
+- name: restart httpd
   service:
     name: httpd
     state: restarted
@@ -930,12 +932,12 @@ tasks:
 - yum:
     name: <mark>&quot;{{ item }}&quot;</mark>
     state: latest
-  <mark>with_items:</mark>
+  <mark>loop:</mark>
   <mark>- httpd</mark>
   <mark>- mod_wsgi</mark>
             </code></pre>
             <aside class="notes">
-              <p>This example demonstrates a basic loop with <code>with_items</code>. The loop sets a variable called &quot;item&quot;, a template variable courtesy of the embedded Jinja2 template engine, with the list value that is in context.</p>
+              <p>This example demonstrates a basic loop with <code>loop</code>. The loop sets a variable called &quot;item&quot;, a template variable courtesy of the embedded Jinja2 template engine, with the list value that is in context.</p>
               <p>There are many different and specialized types of task loops to work with. See the <a href="http://docs.ansible.com/ansible/playbooks_loops.html">Loops documentation</a> to go deeper.</p>
             </aside>
           </section>
@@ -961,7 +963,7 @@ tasks:
 - yum:
     name: &quot;{{ item }}&quot;
     state: latest
-  with_items:
+  loop:
   - httpd
   - mod_wsgi
   <mark>tags:</mark>
@@ -986,7 +988,7 @@ tasks:
   - yum:
       name: &quot;{{ item }}&quot;
       state: latest
-    with_items:
+    loop:
     - httpd
     - mod_wsgi
 

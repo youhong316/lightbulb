@@ -5,7 +5,7 @@ While it is possible to write a Playbook in one very large file, eventually you�
 When you start to think about it – tasks, handlers, variables, and so on – begin to form larger concepts. You start to think about modeling what something is,
 
 * It’s no longer "apply THIS to these hosts"
-* You say "these hosts are are webservers".
+* You say "these hosts are webservers".
 
 Roles build on the idea of include files and provide Ansible with a way to load tasks, handlers, and variables from external files. The files that define a role have specific names and are organized in a rigid directory structure.
 
@@ -93,13 +93,6 @@ rm -rf files tests
 In this section, we will separate out the major parts of your playbook including `vars:`, `tasks:`, `template:`, and `handlers:`.
 
 ### Step 1
-
-Copy the `inventory.ini` file:
-
-```bash
-cd ~/apache-role
-cp ~/apache-basic-playbook/inventory.ini inventory.ini
-```
 
 Make a copy of `site.yml` which was written in the last exercise to the current directory.
 
@@ -234,7 +227,7 @@ Now that you've successfully separated your original playbook into a role, let's
 Run the playbook.
 
 ```bash
-ansible-playbook -i ./inventory.ini site.yml
+ansible-playbook site.yml
 ```
 
 If successful, your standard output should look similar to the figure below.
@@ -247,4 +240,4 @@ You should now have a completed playbook, `site.yml` with a single role called `
 
 ---
 
-[Click Here to return to the Ansible Lightbulb - Ansible Engine Workshop](../README.md)
+[Click Here to return to the Ansible Lightbulb - Ansible Engine Guide](../README.md)

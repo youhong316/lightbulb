@@ -1,6 +1,6 @@
-# Ansible Lightbulb - Ansible Tower
+# Ansible Lightbulb - Ansible Tower Guide
 
-This guide is part of lightbulb, a multi-purpose toolkit for effectively demonstrating Ansible's capabilities or providing informal workshop training in various forms -- instructor-led, hands-on or self-paced.
+This guide is part of lightbulb, a multi-purpose toolkit for effectively demonstrating Ansible's capabilities or providing informal trainings in various forms -- instructor-led, hands-on or self-paced.
 
 The focus of this guide is on the set up and usage of Ansible Tower.
 
@@ -14,10 +14,12 @@ There are multiple exercises available. It is strongly recommended to run them o
 
 ## Additional information
 
+Additional information about Ansible, how to get started and where to proceed after this guide, have a look at the following sources:
+
 * [Ansible Tower User Guide](http://docs.ansible.com/ansible-tower/latest/html/userguide/index.html)
 * [Ansible Tower Administration Guide](http://docs.ansible.com/ansible-tower/latest/html/administration/index.html)
 
 ---
-![Ansible Tower](ansible-tower-logo.png)
+![Ansible Tower](ansible_tower_logo.png)
 
 Red Hat® Ansible® Tower is a fully supported product built on the simple, powerful and agentless foundation capabilities derived from the Ansible project.  Please visit [ansible.com](https://www.ansible.com/tower) for more information.
